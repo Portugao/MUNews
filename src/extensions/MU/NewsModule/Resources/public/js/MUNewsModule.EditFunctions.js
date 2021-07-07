@@ -95,7 +95,7 @@ function mUNewsInitEditForm(mode, entityId) {
         mUNewsExecuteCustomValidationConstraints(editedObjectType, editedEntityId);
     });
 
-    formButtons = editForm.find('.form-buttons input');
+    formButtons = editForm.find('.form-buttons input, .form-buttons button');
     if (editForm.find('.btn-danger').length > 0) {
         editForm.find('.btn-danger').first().bind('click keypress', function (event) {
             if (!window.confirm(Translator.trans('Do you really want to delete this entry?'))) {
