@@ -183,12 +183,14 @@
     {% set isQuickView = app.request.query.getBoolean('raw', false) %}
     <div role="tabpanel" class="tab-pane fade" id="tabRelations" aria-labelledby="relationsTab">
         <h3>{% trans from 'messages' %}Related data{% endtrans %}</h3>
+        {% set sectionTitle %}
+            {% trans from 'image' %}Images{% endtrans %}
+        {% endset %}
         {% if routeArea == 'admin' %}
-            <h4>{% trans from 'image' %}Images{% endtrans %}</h4>
+            <h4>{{ sectionTitle }}</h4>
         {% else %}
-            <h3>{% trans from 'image' %}Images{% endtrans %}</h3>
+            <h3>{{ sectionTitle }}</h3>
         {% endif %}
-        
         {% if message.images|default %}
             {{ include(
                 '@MUNewsModule/Image/Admin/includeDisplayItemListMany.html.twig',

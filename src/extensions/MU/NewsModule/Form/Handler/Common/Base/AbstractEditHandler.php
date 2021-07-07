@@ -686,7 +686,9 @@ abstract class AbstractEditHandler
         $action = $args['commandName'];
         $isRegularAction = 'delete' !== $action;
     
-        $this->fetchInputData();
+        if (false === $this->fetchInputData()) {
+            return false;
+        }
     
         // get treated entity reference from persisted member var
         $entity = $this->entityRef;
@@ -774,7 +776,7 @@ abstract class AbstractEditHandler
         $entity = $this->entityRef;
         foreach ($this->getAttributeFieldNames() as $fieldName) {
             $value = $this->form['attributes' . $fieldName]->getData();
-            $entity->setAttribute($fieldName, $value);
+            $entity->setAttribute($fieldName, (string) $value);
         }
     }
     
